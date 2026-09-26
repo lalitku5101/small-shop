@@ -259,19 +259,6 @@ app.post('/api/contact', formLimiter, async (req, res) => {
     res.status(500).json({ success: false, error: 'Server error.' });
   }
 });
-
-/* ============================================================
-   ADMIN AUTH MIDDLEWARE
-============================================================ */
-function requireAdmin(req, res, next) {
-  const token = req.get('x-admin-token') || req.query.token || '';
-  if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) {
-    return res.status(401).json({ success: false, error: 'Unauthorized.' });
-  }
-  next();
-}
-  
-
 /* ============================================================
    API: PLACE ORDER (cart checkout)
 ============================================================ */
@@ -341,11 +328,16 @@ app.get('/api/admin/orders', requireAdmin, async (req, res) => {
   }
 });
 
+
 /* ============================================================
    ADMIN AUTH MIDDLEWARE
 ============================================================ */
 function requireAdmin(req, res, next) {
-  // ...
+  const token = req.get('x-admin-token') || req.query.token || '';
+  if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) {
+    return res.status(401).json({ success: false, error: 'Unauthorized.' });
+  }
+  next();
 }
 /* ============================================================
    API: ADMIN
