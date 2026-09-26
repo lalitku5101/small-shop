@@ -20,6 +20,7 @@ const DATA_DIR = path.join(__dirname, 'data');
 const REQUESTS_FILE = path.join(DATA_DIR, 'requests.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
+const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 
 /* ============================================================
    SEED DATA
@@ -49,6 +50,7 @@ async function ensureDataFiles() {
   await ensureFile(REQUESTS_FILE, '[]');
   await ensureFile(MESSAGES_FILE, '[]');
   await ensureFile(PRODUCTS_FILE, JSON.stringify(seedProducts(), null, 2));
+  await ensureFile(ORDERS_FILE, '[]');
 }
 
 async function ensureFile(filePath, defaultContent) {
@@ -268,7 +270,83 @@ function requireAdmin(req, res, next) {
   }
   next();
 }
+  
 
+/* ============================================================
+   API: PLACE ORDER (cart checkout)
+============================================================ */
+app.post('/api/orders', formLimiter, async (req, res) => {
+  try {
+    const name = clean(req.body.name, 80);
+    const phone = clean(req.body.phone, 20);
+    const email = clean(req.body.email, 120).toLowerCase();
+    const address = clean(req.body.address, 300);
+    const notes = clean(req.body.notes, 500);
+    const items = Array.isArray(req.body.items) ? req.body.items : [];
+
+    const errors = [];
+    if (name.length < 2) errors.push('Please enter your name.');
+    if (phone.length < 7) errors.push('Please enter a valid phone number.');
+    if (address.length < 5) errors.push('Please enter a delivery address.');
+    if (items.length === 0) errors.push('Your cart is empty.');
+
+    if (errors.length) {
+      return res.status(400).json({ success: false, errors });
+    }
+
+    const cleanItems = items.map(it => ({
+      id: clean(it.id, 40),
+      name: clean(it.name, 200),
+      price: Number(it.price) || 0,
+      unit: clean(it.unit, 20),
+      quantity: Math.max(1, parseInt(it.quantity) || 1)
+    }));
+
+    const total = cleanItems.reduce((sum, it) => sum + it.price * it.quantity, 0);
+
+    const orders = await readJSON(ORDERS_FILE);
+    const record = {
+      id: makeId('ord'),
+      name, phone, email, address, notes,
+      items: cleanItems,
+      total,
+      status: 'new',
+      createdAt: new Date().toISOString()
+    };
+
+    orders.unshift(record);
+    if (orders.length > 2000) orders.length = 2000;
+    await writeJSON(ORDERS_FILE, orders);
+
+    console.log(`🛍 New order: ${cleanItems.length} items, ₹${total}, from ${name} (${phone})`);
+
+    res.status(201).json({
+      success: true,
+      message: `Order placed! We'll call you at ${phone} to confirm.`,
+      orderId: record.id,
+      total
+    });
+  } catch (err) {
+    console.error('order error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/admin/orders', requireAdmin, async (req, res) => {
+  try {
+    const orders = await readJSON(ORDERS_FILE);
+    res.json({ success: true, count: orders.length, orders });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/* ============================================================
+   ADMIN AUTH MIDDLEWARE
+============================================================ */
+function requireAdmin(req, res, next) {
+  // ...
+}
 /* ============================================================
    API: ADMIN
 ============================================================ */
