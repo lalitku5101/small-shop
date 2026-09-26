@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1">&lt;title&gt;small-shop&lt;/title&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg: #0a0e0d;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--card: rgba(255,255,255,0.04);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--stroke: rgba(255,255,255,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text: #e8f0ee;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--muted: #8ba39d;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green: #10b981;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Plus Jakarta Sans', system-ui, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.55;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 40px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.container { max-width: 1100px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sub { color: var(--muted); margin-bottom: 32px; font-size: 0.95rem; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.login {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 420px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 60px auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 32px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--stroke);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.login h2 { margin-bottom: 16px; font-size: 1.2rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.login input {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%; padding: 13px 16px; margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px; background: rgba(0,0,0,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--stroke); color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: inherit; font-size: 0.95rem; outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.login input:focus { border-color: var(--green); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.login button {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%; padding: 13px; border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600; font-family: inherit; cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(120deg, var(--green), #059669);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff; border: none; font-size: 0.95rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stats {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 14px; margin-bottom: 32px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 22px; background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--stroke); border-radius: 14px; text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat b { display: block; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stat span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabs { display: flex; gap: 8px; margin-bottom: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tab {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 20px; border-radius: 10px; background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--stroke); color: var(--muted); cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: inherit; font-weight: 500; font-size: 0.88rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tab.active { background: rgba(16,185,129,0.15); color: #6ee7b7; border-color: rgba(16,185,129,0.4); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.list { display: flex; flex-direction: column; gap: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item { padding: 20px; background: var(--card); border: 1px solid var(--stroke); border-radius: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .name { font-weight: 700; font-size: 1.02rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .time { font-size: 0.78rem; color: var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.88rem; color: var(--muted); margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .meta b { color: var(--text); font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .notes {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 10px; padding: 10px 14px; background: rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px; font-size: 0.88rem; color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-left: 2px solid var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block; padding: 3px 10px; border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform: uppercase; background: rgba(16,185,129,0.15); color: #6ee7b7;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.empty-msg {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 60px 20px; text-align: center; color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--card); border: 1px dashed var(--stroke); border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.err { color: #f87171; margin-top: 12px; font-size: 0.88rem; }</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div class="container" id="app"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">(function () {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>'use strict';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const app = document.getElementById('app');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let token = new URLSearchParams(location.search).get('token') || '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let activeTab = 'requests';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function escapeHTML(str) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return String(str == null ? '' : str).replace(/[&amp;&lt;&gt;"']/g, (m) =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'&amp;': '&amp;amp;', '&lt;': '&amp;lt;', '&gt;': '&amp;gt;', '"': '&amp;quot;', "'": '&amp;#39;'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}[m]));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function formatDate(iso) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try { return new Date(iso).toLocaleString(); } catch { return iso; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function apiFetch(path) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const res = await fetch(path, { headers: { 'x-admin-token': token } });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await res.json().catch(() =&gt; ({}));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!res.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>throw new Error(data.error || 'Request failed (HTTP ' + res.status + ')');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return data;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderLogin(err) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="login"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;🔒 Admin Login&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="sub"&gt;Enter your admin token to view requests&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="password" id="tokenInput" placeholder="Admin token" value="${escapeHTML(token)}" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="loginBtn"&gt;Login&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${err ? '&lt;p class="err"&gt;' + escapeHTML(err) + '&lt;/p&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loginBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const v = document.getElementById('tokenInput').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!v) return renderLogin('Please enter a token.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>token = v;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>history.replaceState(null, '', '?token=' + encodeURIComponent(v));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>load();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('tokenInput').addEventListener('keypress', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (e.key === 'Enter') document.getElementById('loginBtn').click();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function load() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!token) return renderLogin();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const statsData = await apiFetch('/api/admin/stats');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let listData;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (activeTab === 'requests') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>listData = await apiFetch('/api/admin/requests');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>listData = await apiFetch('/api/admin/messages');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderDashboard(statsData.stats, listData);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.error(err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderLogin(err.message || 'Invalid token or server error.');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderDashboard(stats, listData) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const items = activeTab === 'requests' ? listData.requests : listData.messages;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;📊 Shop Admin Panel&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="sub"&gt;Manage customer requests and messages&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat"&gt;&lt;b&gt;${stats.totalRequests}&lt;/b&gt;&lt;span&gt;Total Requests&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat"&gt;&lt;b&gt;${stats.newRequests}&lt;/b&gt;&lt;span&gt;New Requests&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat"&gt;&lt;b&gt;${stats.totalMessages}&lt;/b&gt;&lt;span&gt;Messages&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stat"&gt;&lt;b&gt;${stats.totalProducts}&lt;/b&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab ${activeTab === 'requests' ? 'active' : ''}" data-tab="requests"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>🛒 Requests (${stats.totalRequests})</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab ${activeTab === 'messages' ? 'active' : ''}" data-tab="messages"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>📩 Messages (${stats.totalMessages})</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="list" id="itemList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>app.querySelectorAll('.tab').forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>activeTab = btn.dataset.tab;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>load();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderList(items);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function renderList(items) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const list = document.getElementById('itemList');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!list) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!items || items.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>list.innerHTML = '&lt;div class="empty-msg"&gt;Nothing here yet. New submissions will appear here.&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>list.innerHTML = items.map(it =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (activeTab === 'requests') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="name"&gt;${escapeHTML(it.item)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="meta"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;&lt;b&gt;${escapeHTML(it.name)}&lt;/b&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;📞 ${escapeHTML(it.phone)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>${it.email ? '&lt;span&gt;✉️ ' + escapeHTML(it.email) + '&lt;/span&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>${it.quantity ? '&lt;span&gt;📦 ' + escapeHTML(it.quantity) + '&lt;/span&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div style="text-align:right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="badge"&gt;${escapeHTML(it.status || 'new')}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="time"&gt;${formatDate(it.createdAt)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>${it.notes ? '&lt;div class="notes"&gt;' + escapeHTML(it.notes) + '&lt;/div&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="name"&gt;${escapeHTML(it.name)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="meta"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;span&gt;✉️ ${escapeHTML(it.email)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>${it.phone ? '&lt;span&gt;📞 ' + escapeHTML(it.phone) + '&lt;/span&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="time"&gt;${formatDate(it.createdAt)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="notes"&gt;${escapeHTML(it.message)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}).join('');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>load();</p>
+<p class="p1">})();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>

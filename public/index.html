@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Small Shop — Your Neighborhood Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0e0d; --card: rgba(255,255,255,0.04); --stroke: rgba(255,255,255,0.08);
+    --text: #e8f0ee; --muted: #8ba39d; --green: #10b981; --green-dark: #059669; --amber: #f59e0b;
+    --radius: 18px; --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(60% 50% at 15% 0%, rgba(16,185,129,0.15), transparent 65%),
+                radial-gradient(50% 50% at 85% 100%, rgba(245,158,11,0.10), transparent 65%); }
+  a { color: inherit; text-decoration: none; }
+
+  .nav { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); background: rgba(10,14,13,0.72); border-bottom: 1px solid var(--stroke); }
+  .nav-inner { max-width: 1180px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; }
+  .brand-mark { font-size: 1.4rem; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--muted); transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-btn { padding: 10px 20px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; color: #fff; background: linear-gradient(120deg, var(--green), var(--green-dark)); box-shadow: 0 8px 22px -8px rgba(16,185,129,0.8); white-space: nowrap; }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  .hero { padding: 90px 24px 70px; text-align: center; }
+  .hero-inner { max-width: 780px; margin: 0 auto; }
+  .tag { display: inline-block; padding: 8px 18px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; color: #a7f3d0; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); margin-bottom: 26px; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; margin-bottom: 22px; }
+  .grad { background: linear-gradient(100deg, var(--green), #84cc16, var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 580px; margin: 0 auto 34px; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 999px; font-family: inherit; font-weight: 600; font-size: 0.92rem; border: 1px solid transparent; cursor: pointer; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+  .btn-primary { color: #fff; background: linear-gradient(120deg, var(--green), var(--green-dark)); box-shadow: 0 14px 34px -12px rgba(16,185,129,0.9); }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  .btn-ghost { color: var(--text); background: rgba(255,255,255,0.04); border-color: var(--stroke); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .btn-block { width: 100%; }
+
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 560px; margin: 0 auto; padding: 26px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--stroke); backdrop-filter: blur(14px); }
+  .hero-stats div { text-align: center; }
+  .hero-stats b { display: block; font-size: 1.5rem; font-weight: 800; color: #fff; }
+  .hero-stats span { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .section { max-width: 1180px; margin: 0 auto; padding: 80px 24px; }
+  .section-alt { max-width: 100%; background: #0f1614; border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); }
+  .section-alt .section-head, .section-alt .form { max-width: 780px; margin-left: auto; margin-right: auto; }
+  .section-head { text-align: center; max-width: 620px; margin: 0 auto 50px; }
+  .eyebrow { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+  .section-head h2 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+  .section-head p { color: var(--muted); font-size: 1rem; }
+
+  .controls { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
+  #searchInput { width: 100%; padding: 15px 22px; border-radius: 999px; background: var(--card); border: 1px solid var(--stroke); color: var(--text); font-family: inherit; font-size: 0.95rem; outline: none; }
+  #searchInput:focus { border-color: rgba(16,185,129,0.6); }
+  #searchInput::placeholder { color: #5a6b67; }
+  .categories { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .cat-chip { padding: 9px 18px; border-radius: 999px; font-size: 0.82rem; font-weight: 500; background: var(--card); border: 1px solid var(--stroke); color: var(--muted); cursor: pointer; font-family: inherit; transition: all 0.25s; }
+  .cat-chip:hover { color: var(--text); }
+  .cat-chip.active { background: linear-gradient(120deg, var(--green), var(--green-dark)); color: #fff; border-color: transparent; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  .product-card { padding: 24px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--stroke); backdrop-filter: blur(14px); display: flex; flex-direction: column; transition: transform 0.4s var(--ease), border-color 0.35s, box-shadow 0.4s; }
+  .product-card:hover { transform: translateY(-6px); border-color: rgba(16,185,129,0.4); box-shadow: 0 24px 50px -20px rgba(16,185,129,0.5); }
+  .product-card .cat-label { display: inline-block; align-self: flex-start; padding: 4px 10px; border-radius: 6px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(16,185,129,0.12); color: #6ee7b7; margin-bottom: 14px; }
+  .product-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .product-card .desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; flex-grow: 1; }
+  .product-card .price-row { display: flex; align-items: baseline; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--stroke); }
+  .product-card .price { font-size: 1.35rem; font-weight: 800; color: #fff; }
+  .product-card .price small { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+  .product-card .stock { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(16,185,129,0.15); color: #6ee7b7; }
+  .product-card .stock.out { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .loading, .empty { text-align: center; padding: 60px 20px; color: var(--muted); grid-column: 1 / -1; }
+
+  .form { display: flex; flex-direction: column; gap: 18px; padding: 36px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--stroke); backdrop-filter: blur(14px); }
+  .field { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+  .form label { font-size: 0.82rem; font-weight: 600; }
+  .form input, .form textarea { width: 100%; padding: 14px 18px; border-radius: 12px; background: rgba(0,0,0,0.25); border: 1px solid var(--stroke); color: var(--text); font-family: inherit; font-size: 0.92rem; outline: none; }
+  .form textarea { resize: vertical; min-height: 90px; }
+  .form input:focus, .form textarea:focus { border-color: rgba(16,185,129,0.6); }
+  .form input::placeholder, .form textarea::placeholder { color: #5a6b67; }
+  .form-status { font-size: 0.88rem; min-height: 1.2em; text-align: center; font-weight: 500; }
+  .form-status.success { color: #6ee7b7; }
+  .form-status.error { color: #f87171; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .info-card { padding: 34px; border-radius: var(--radius); background: linear-gradient(160deg, rgba(16,185,129,0.10), rgba(255,255,255,0.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); }
+  .info-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+  .info-list li { display: flex; gap: 16px; align-items: flex-start; }
+  .info-list li span { font-size: 1.3rem; }
+  .info-list li b { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 4px; }
+  .info-list li p { font-size: 0.92rem; }
+
+  .footer { border-top: 1px solid var(--stroke); padding: 50px 24px; text-align: center; background: rgba(10,14,13,0.6); backdrop-filter: blur(14px); }
+  .footer-inner { max-width: 620px; margin: 0 auto; }
+  .footer .brand { justify-content: center; margin-bottom: 14px; }
+  .footer p { color: var(--muted); font-size: 0.9rem; }
+  .footer .copyright { margin-top: 18px; font-size: 0.8rem; color: #5a6b67; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand"><span class="brand-mark">🏪</span><span id="shopName">Shop</span></a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#request">Request Item</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#request" class="nav-btn">Need something?</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="tag">✨ Fresh stock arriving daily</span>
+    <h1>Your trusted <span class="grad">neighborhood store</span>, now online.</h1>
+    <p>Browse what we have, tell us what you need — we'll have it ready.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary">Browse Products →</a>
+      <a href="#request" class="btn btn-ghost">Request an item</a>
+    </div>
+    <div class="hero-stats">
+      <div><b id="statProducts">10+</b><span>Products</span></div>
+      <div><b>Fast</b><span>Local delivery</span></div>
+      <div><b>Trusted</b><span>Since 2010</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="products">
+  <div class="section-head">
+    <span class="eyebrow">Our stock</span>
+    <h2>What's on our shelves</h2>
+    <p>Quality products at fair prices. If you don't see what you need, request it below.</p>
+  </div>
+  <div class="controls">
+    <input type="search" id="searchInput" placeholder="🔍 Search products…" />
+    <div class="categories" id="categoryFilters"></div>
+  </div>
+  <div class="product-grid" id="productGrid"><div class="loading">Loading products…</div></div>
+  <div class="empty" id="emptyState" hidden><p>No products match your search.</p></div>
+</section>
+
+<section class="section section-alt" id="request">
+  <div class="section-head">
+    <span class="eyebrow">Can't find it?</span>
+    <h2>Tell us what you need</h2>
+    <p>Looking for something we don't have? Send us a request — we'll try to source it.</p>
+  </div>
+  <form class="form" id="requestForm" novalidate>
+    <div class="row">
+      <div class="field"><label for="r-name">Your name *</label><input id="r-name" name="name" type="text" placeholder="Your name" required maxlength="80" /></div>
+      <div class="field"><label for="r-phone">Phone number *</label><input id="r-phone" name="phone" type="tel" placeholder="+91 98765 43210" required maxlength="20" /></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="r-email">Email (optional)</label><input id="r-email" name="email" type="email" placeholder="you@email.com" maxlength="120" /></div>
+      <div class="field"><label for="r-quantity">Quantity</label><input id="r-quantity" name="quantity" type="text" placeholder="e.g. 2 kg" maxlength="60" /></div>
+    </div>
+    <div class="field"><label for="r-item">Item you need *</label><input id="r-item" name="item" type="text" placeholder="e.g. Organic honey" required maxlength="200" /></div>
+    <div class="field"><label for="r-notes">Additional notes</label><textarea id="r-notes" name="notes" rows="3" placeholder="Any preferences…" maxlength="800"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Send Request →</button>
+    <p class="form-status" id="requestStatus" role="status"></p>
+  </form>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-head">
+    <span class="eyebrow">Get in touch</span>
+    <h2>Visit or contact us</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="info-card">
+      <h3>Visit our shop</h3>
+      <ul class="info-list">
+        <li><span>📍</span><div><b>Address</b><p id="infoAddress">—</p></div></li>
+        <li><span>📞</span><div><b>Phone</b><p id="infoPhone">—</p></div></li>
+        <li><span>✉️</span><div><b>Email</b><p id="infoEmail">—</p></div></li>
+        <li><span>🕒</span><div><b>Hours</b><p>Mon–Sat: 8 AM – 9 PM<br>Sun: 9 AM – 7 PM</p></div></li>
+      </ul>
+    </div>
+    <form class="form" id="contactForm" novalidate>
+      <div class="field"><label for="c-name">Your name *</label><input id="c-name" name="name" type="text" placeholder="Your name" required maxlength="80" /></div>
+      <div class="row">
+        <div class="field"><label for="c-email">Email *</label><input id="c-email" name="email" type="email" placeholder="you@email.com" required maxlength="120" /></div>
+        <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" placeholder="Optional" maxlength="20" /></div>
+      </div>
+      <div class="field"><label for="c-message">Message *</label><textarea id="c-message" name="message" rows="4" placeholder="How can we help?" required maxlength="1500"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-block">Send Message →</button>
+      <p class="form-status" id="contactStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand"><span class="brand-mark">🏪</span><span id="footerShopName">Shop</span></div>
+    <p>Serving our community with quality products and personal care.</p>
+    <p class="copyright">© <span id="footerYear"></span> · All rights reserved</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
